@@ -4,6 +4,7 @@ class PageViewStatic{
 
   static PageController pageController = PageController();
 
+  static ScrollController scrollController = ScrollController();
 
   static  double getHeight({required int state}){
     if(state == 0) {

@@ -47,10 +47,13 @@ class CustomNavBar extends StatelessWidget {
                 )
                     : Row(
                       children: const [
-                        NavBarItems(title: 'About Us', itemIndex: 0,),
-                        NavBarItems(title: 'Services', itemIndex: 1,),
-                        NavBarItems(title: 'Portfolio', itemIndex: 2,),
-                        NavBarItems(title: 'Contact us', itemIndex: 3,),
+                        Expanded(child: NavBarItems(title: 'About Us', itemIndex: 0,)),
+                        
+                        Expanded(child: NavBarItems(title: 'Services', itemIndex: 1,)),
+                        
+                        Expanded(child: NavBarItems(title: 'Portfolio', itemIndex: 2,)),
+                        
+                        Expanded(child: NavBarItems(title: 'Contact us', itemIndex: 3,)),
 
                       ],
                     ),

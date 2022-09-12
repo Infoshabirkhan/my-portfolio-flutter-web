@@ -19,36 +19,35 @@ class NavBarItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocBuilder<NavControlCubit, int>(
-        builder: (context, state) {
-          return InkWell(
-            hoverColor: Colors.red,
+    return BlocBuilder<NavControlCubit, int>(
+      builder: (context, state) {
+        return InkWell(
+          hoverColor: Colors.red,
 
-            onTap: () {
-              PageViewStatic.pageController.jumpToPage(itemIndex);
-              context.read<NavControlCubit>().getIndex(index: itemIndex);
-              if(isDrawer! ){
+          onTap: () {
+            PageViewStatic.pageController.jumpToPage(itemIndex);
+            context.read<NavControlCubit>().getIndex(index: itemIndex);
+            PageViewStatic.scrollController.jumpTo(0);
+            if(isDrawer! ){
 
-                Navigator.of(context).pop();
-              }
-              // Navigator.of(context).push(MaterialPageRoute(builder: (context){
-              //   return HomeScreen();
-              //  }));
-            },
-            child: Container(
-              child: Text(
-                title,
-                style: GoogleFonts.raleway(
+              Navigator.of(context).pop();
+            }
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            //   return HomeScreen();
+            //  }));
+          },
+          child: Container(
+            child: Text(
+              title,
+              style: GoogleFonts.raleway(
 
-                  color: state == itemIndex ? Colors.orange : Colors.white
+                color: state == itemIndex ? Colors.orange : Colors.white
 
-                ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     )
     ;
   }

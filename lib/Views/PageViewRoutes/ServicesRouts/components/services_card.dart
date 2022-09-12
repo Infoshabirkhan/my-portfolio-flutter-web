@@ -34,7 +34,7 @@ class ServicesCard extends StatelessWidget {
           ),
         ),
         width: 300.sp,
-        height: 50.h,
+        height: 50.sp,
         child: Align(
           alignment: Alignment.centerLeft,
           child: Text(

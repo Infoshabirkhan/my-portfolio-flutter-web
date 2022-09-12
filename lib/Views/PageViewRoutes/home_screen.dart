@@ -10,6 +10,7 @@ import 'package:my_portfolio_web/Views/PageViewRoutes/ServicesRouts/services_vie
 import 'package:my_portfolio_web/Views/Utils/Widgets/CustomNavBar/custom_nav_bar.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/page_view_static.dart';
 
+import '../../Models/Utils/remove_glow.dart';
 import '../Utils/Widgets/custom_drawer.dart';
 import 'PortfolioRoutes/portfolio_view.dart';
 
@@ -21,16 +22,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  ScrollController scrollController = ScrollController();
+ // ScrollController scrollController = ScrollController();
 
   bool showContainer = false;
 
   @override
   void initState() {
-    scrollController.addListener(() {
+    //PageViewStatic.scrollController.jumpTo(0);
+    PageViewStatic.scrollController.addListener(() {
 
-      print(scrollController.offset);
-      if (scrollController.offset > 250) {
+      print(PageViewStatic.scrollController.offset);
+      if (PageViewStatic.scrollController.offset > 250) {
 
         if(context.read<NavControlCubit>().state == 1){
 
@@ -65,31 +67,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
         children: [
 
-          ListView(
+          ScrollConfiguration(
+            behavior: RemoveGlow(),
+            child: ListView(
 
-            controller: scrollController,
-            children: [
-              const CustomNavBar(),
+              controller: PageViewStatic.scrollController,
+              children: [
+                const CustomNavBar(),
 
-              BlocBuilder<NavControlCubit, int>(
-                builder: (context, state) {
-                  return SizedBox(
-                    height: PageViewStatic.getHeight(state: state).sp,
-                    child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: PageViewStatic.pageController,
-                      children: const [
-                        AboutUsView(),
-                        ServicesView(),
-                        PortfolioView(),
-                        ContactUsView(),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                BlocBuilder<NavControlCubit, int>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      height: PageViewStatic.getHeight(state: state).sp,
+                      child: PageView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        controller: PageViewStatic.pageController,
+                        children: const [
+                          AboutUsView(),
+                          ServicesView(),
+                          PortfolioView(),
+                          ContactUsView(),
+                        ],
+                      ),
+                    );
+                  },
+                ),
 
-            ],
+              ],
+            ),
           ),
 
           Positioned(

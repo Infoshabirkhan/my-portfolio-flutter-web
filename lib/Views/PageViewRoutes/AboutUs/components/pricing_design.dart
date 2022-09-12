@@ -154,7 +154,7 @@ class PricingCards extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             'Source code',
-                            style: GoogleFonts.raleway(fontSize: 15.sp),
+                            style: GoogleFonts.raleway(fontSize: width < Responsive.mobileMaxWith  ? 13.sp:15.sp,),
                           ),
                         ),
                       ],
@@ -184,7 +184,7 @@ class PricingCards extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             'App Icon',
-                            style: GoogleFonts.raleway(fontSize: 15.sp),
+                            style: GoogleFonts.raleway(fontSize: width < Responsive.mobileMaxWith  ? 13.sp:15.sp,),
                           ),
                         ),
                       ],
@@ -214,7 +214,7 @@ class PricingCards extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             'Splash Screen',
-                            style: GoogleFonts.raleway(fontSize: 15.sp),
+                            style: GoogleFonts.raleway(fontSize: width < Responsive.mobileMaxWith  ? 13.sp:15.sp,),
                           ),
                         ),
                       ],
@@ -244,7 +244,7 @@ class PricingCards extends StatelessWidget {
                           flex: 3,
                           child: Text(
                             'App Submission',
-                            style: GoogleFonts.raleway(fontSize: 15.sp),
+                            style: GoogleFonts.raleway(fontSize: width < Responsive.mobileMaxWith  ? 13.sp:15.sp,),
                           ),
                         ),
                       ],

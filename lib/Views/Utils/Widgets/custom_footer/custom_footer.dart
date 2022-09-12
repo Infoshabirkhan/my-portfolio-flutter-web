@@ -155,7 +155,7 @@ class CustomFooter extends StatelessWidget {
                             FontAwesomeIcons.facebookF,
                             color: Colors.blue,
                           ),
-                          link: 'm.facebook.com',
+                          link: 'https://www.facebook.com/shabbir.ahmad55/',
                         ),
                         SocailMediaButtons(
                           icon: FaIcon(
@@ -180,7 +180,9 @@ class CustomFooter extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: Text(
                           '\u00a9 Copy Right 2022, All Right reserved',
-                          style: GoogleFonts.raleway(),
+                          style: GoogleFonts.raleway(
+                            fontSize: width < Responsive.mobileMaxWith ? 8.sp:14.sp
+                          ),
                         )),
                   ),
                 ],
