@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_bar_animation_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_control_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/services_provide_cubit.dart';
+import 'package:my_portfolio_web/Models/Utils/on_scroll_animation.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/AboutUs/about_us.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/ContactUsRoutes/contact_us.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/ServicesRouts/services_view.dart';
@@ -31,25 +32,35 @@ class _HomeScreenState extends State<HomeScreen> {
     //PageViewStatic.scrollController.jumpTo(0);
     PageViewStatic.scrollController.addListener(() {
 
+
       print(PageViewStatic.scrollController.offset);
       if (PageViewStatic.scrollController.offset > 250) {
 
-        if(context.read<NavControlCubit>().state == 1){
+
+        /// ============= Services Animation
+
+          OnScrollAnimation.ourGoalAnimation(context, true);
 
 
-          context.read<ServicesProvideCubit>().showServices(status: true );
+          ///============= animate our goal
 
-        }
 
-          context.read<NavBarAnimationCubit>().showNavBar(status: true);
+        OnScrollAnimation.servicesAnimation(context, true);
+
+
+        context.read<NavBarAnimationCubit>().showNavBar(status: true);
+
 
       } else {
 
-        if(context.read<NavControlCubit>().state == 1){
-          context.read<ServicesProvideCubit>().showServices(status: false);
 
-        }
-          context.read<NavBarAnimationCubit>().showNavBar(status: false);
+
+        OnScrollAnimation.ourGoalAnimation(context, false);
+
+        /// ============= Services Animation
+        OnScrollAnimation.servicesAnimation(context, false);
+
+
 
       }
     });
@@ -107,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   opacity: state ? 1 : 0,
 
                   child: AnimatedContainer(
-                    color: Colors.black,
+                    color: Colors.transparent,
                     duration: const Duration(milliseconds: 300),
                     height: state ? 100 : 0,
                     child: const CustomNavBar(),

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_control_cubit.dart';
+import 'package:my_portfolio_web/Controllers/Cubits/our_services_animation_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/services_provide_cubit.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/home_screen.dart';
 
 import 'Controllers/Cubits/nav_bar_animation_cubit.dart';
-import 'Views/PageViewRoutes/another_footer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,19 +41,21 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return ScreenUtilInit(
 
       builder: (BuildContext context, Widget? child) =>
           MultiBlocProvider(
             providers: [
               BlocProvider(create: (context) => NavBarAnimationCubit(false) ),
+              BlocProvider(create: (context) => OurServicesAnimationCubit(false) ),
               BlocProvider(create: (context) => NavControlCubit(0) ),
               BlocProvider(create: (context) => ServicesProvideCubit(false) ),
             ],
             child: MaterialApp(
 
               debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
+              title: 'SCoder-Shabir khan',
               theme: ThemeData(
 
                 brightness: Brightness.dark,
@@ -75,11 +77,19 @@ class _MyAppState extends State<MyApp> {
                   }
                 },
               ),
+
+              routes: {
+             //   '/image-preview' : (context)=>const CustomImagePreview(),
+              },
             ),
+
+
           ),
 
       minTextAdapt: true,
+
     );
   }
+
 }
 

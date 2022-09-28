@@ -18,15 +18,17 @@ class ContactItems extends StatelessWidget {
         children: [
           Expanded(
             child: Align(
-                alignment: Alignment.centerLeft,
-                child: icon),
+              alignment: Alignment.centerLeft,
+              child: icon,
+            ),
           ),
           Expanded(
-              flex: 4,
-              child: SelectableText(
-                label,
-                style: GoogleFonts.raleway(),
-              ))
+            flex: 4,
+            child: SelectableText(
+              label,
+              style: GoogleFonts.raleway(),
+            ),
+          ),
         ],
       ),
     );

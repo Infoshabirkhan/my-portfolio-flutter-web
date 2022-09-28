@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/services_provide_cubit.dart';
 import 'package:my_portfolio_web/Models/Utils/responsive.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/ServicesRouts/components/services_card.dart';
-import 'package:my_portfolio_web/Views/PageViewRoutes/page_view_static.dart';
 import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/custom_footer.dart';
 
 class ServicesView extends StatefulWidget {
@@ -23,7 +22,6 @@ class _ServicesViewState extends State<ServicesView> {
   void initState() {
     scrollController.addListener(() {
       if (scrollController.offset > 100) {
-        print('================ my offset ${scrollController.offset}');
         setState(() {
           showTiles = true;
         });
@@ -42,7 +40,7 @@ class _ServicesViewState extends State<ServicesView> {
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           SizedBox(
             height: 450..sp,
@@ -51,7 +49,6 @@ class _ServicesViewState extends State<ServicesView> {
                 SizedBox(
                   width: 1.sw,
                   height: 1.sw,
-
                   child: Image.asset(
                     'assets/images/technology.jpg',
                     colorBlendMode: BlendMode.darken,
@@ -60,56 +57,72 @@ class _ServicesViewState extends State<ServicesView> {
                   ),
                 ),
                 Center(
-                  child: RichText(text: TextSpan(
-                    text: 'Service',
-                    style: GoogleFonts.raleway(
-
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Service',
+                      style: GoogleFonts.raleway(
                         fontSize: Responsive.extraLargeFont(width: width),
-                      color: Colors.orange
+                        color: Colors.orange,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 's',
+                          style: GoogleFonts.raleway(
+                            color: Colors.white,
+                            fontSize: Responsive.extraLargeFont(width: width),
+                          ),
+                        ),
+                      ],
                     ),
-                    children: [
-
-                      TextSpan(text: 's', style: GoogleFonts.raleway(
-                    color: Colors.white,
-                          fontSize: Responsive.extraLargeFont(width: width)
-                  )),
-                    ]
-                  ),),
+                  ),
                 )
               ],
-            )
+            ),
           ),
-
-
-          SizedBox(height: 20.sp,),
+          SizedBox(
+            height: 20.sp,
+          ),
           Container(
-            padding: EdgeInsets.only(left: Responsive.padding(width: width),),
-            child: RichText(text: TextSpan(
+            height: 120.sp,
+            padding: EdgeInsets.only(
+              left: Responsive.padding(width: width),
+            ),
+            child: RichText(
+              text: TextSpan(
                 text: 'Our ',
                 style: GoogleFonts.raleway(
-
-                    fontSize: Responsive.extraLargeFont(width: width),
-                    color: Colors.white
+                  fontSize: Responsive.extraLargeFont(width: width),
+                  color: Colors.white,
                 ),
                 children: [
-
-                  TextSpan(text: 'Solutions ', style: GoogleFonts.raleway(
+                  TextSpan(
+                    text: 'Solutions ',
+                    style: GoogleFonts.raleway(
                       color: Colors.orange,
-                      fontSize: Responsive.extraLargeFont(width: width)
-                  ),),
-                  TextSpan(text: '&\n', style: GoogleFonts.raleway(
+                      fontSize: Responsive.extraLargeFont(width: width),
+                    ),
+                  ),
+                  TextSpan(
+                    text: '&\n',
+                    style: GoogleFonts.raleway(
                       color: Colors.white,
-                      fontSize: Responsive.extraLargeFont(width: width)
-                  ),),
-                  TextSpan(text: 'Focus Area', style: GoogleFonts.raleway(
+                      fontSize: Responsive.extraLargeFont(width: width),
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Focus Area',
+                    style: GoogleFonts.raleway(
                       color: Colors.orange,
-                      fontSize: Responsive.extraLargeFont(width: width)
-                  ),),
-                ]
-            ),),
+                      fontSize: Responsive.extraLargeFont(width: width),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          SizedBox(height: 20.sp,),
-
+          SizedBox(
+            height: 20.sp,
+          ),
           SizedBox(
             height: 500.sp,
             child: BlocBuilder<ServicesProvideCubit, bool>(
@@ -117,30 +130,34 @@ class _ServicesViewState extends State<ServicesView> {
                 return Stack(
                   children: [
                     ServicesCard(
-                        state: state,
-                        title: 'Android Development',
-                        cardIndex: 0),
+                      state: state,
+                      title: 'Android Development',
+                      cardIndex: 0,
+                    ),
                     ServicesCard(
-                        state: state, title: 'IOS Development', cardIndex: 1,),
+                      state: state,
+                      title: 'IOS Development',
+                      cardIndex: 1,
+                    ),
                     ServicesCard(
-                        state: state, title: 'Web Development', cardIndex: 2,),
+                      state: state,
+                      title: 'Web Development',
+                      cardIndex: 2,
+                    ),
                     ServicesCard(
-                        state: state,
-                        title: 'Flutter Development',
-                        cardIndex: 3,),
+                      state: state,
+                      title: 'Flutter Development',
+                      cardIndex: 3,
+                    ),
                   ],
                 );
               },
             ),
           ),
-
-          SizedBox(height: 120.sp,),
-
-
+          SizedBox(
+            height: 90.sp,
+          ),
           const CustomFooter(),
-
-
-
         ],
       ),
     );

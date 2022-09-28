@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio_web/Models/Utils/responsive.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/AboutUs/components/pricing_design.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/AboutUs/components/skills_design.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/AboutUs/components/why_choose_us.dart';
-import 'package:my_portfolio_web/Views/PageViewRoutes/page_view_static.dart';
 import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/custom_footer.dart';
-import 'package:my_portfolio_web/Views/Utils/Widgets/website_title.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'dart:html' as html;
-
-import '../another_footer.dart';
 
 class AboutUsView extends StatelessWidget {
   const AboutUsView({Key? key}) : super(key: key);
@@ -93,7 +85,7 @@ class AboutUsView extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Container(),
+                    child: Center(child: Image.asset('assets/images/profile.png'),),
                   ),
                 ],
               ),
@@ -111,7 +103,7 @@ class AboutUsView extends StatelessWidget {
             ),
 
             /// ================== > height is 250
-            SkillsDesign(),
+            const SkillsDesign(),
 
             SizedBox(
               height: 100.sp,
@@ -139,7 +131,7 @@ class AboutUsView extends StatelessWidget {
               height: 100.sp,
             ),
 
-            Container(
+            SizedBox(
               height: 150.sp,
               child: Column(
                 children: [
@@ -176,7 +168,7 @@ class AboutUsView extends StatelessWidget {
             /// 400 300 350 300
             /// ==================== height 300
 
-            CustomFooter(),
+            const CustomFooter(),
           ],
         ),
       ),

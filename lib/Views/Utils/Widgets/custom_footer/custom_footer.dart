@@ -6,7 +6,6 @@ import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/contact_items
 import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/footer_menus.dart';
 import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/socail_media_buttons.dart';
 
-import 'dart:html' as html;
 import '../../../../Models/Utils/responsive.dart';
 import '../website_title.dart';
 
@@ -52,14 +51,14 @@ class CustomFooter extends StatelessWidget {
                           ),
                         ),
                         Visibility(
-
-                            visible: width < Responsive.mobileMaxWith ? true : false,
-                            child: FooterMenus())
+                            visible:
+                                width < Responsive.mobileMaxWith ? true : false,
+                            child: const FooterMenus())
                       ],
                     ),
                   ),
                   Visibility(
-                    visible: width < Responsive.mobileMaxWith ? false  : true,
+                    visible: width < Responsive.mobileMaxWith ? false : true,
                     child: Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(),
@@ -75,7 +74,7 @@ class CustomFooter extends StatelessWidget {
                                 ),
                               ),
                             ),
-                           FooterMenus(),
+                            const FooterMenus(),
                           ],
                         ),
                       ),
@@ -89,7 +88,10 @@ class CustomFooter extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Contact Info',
-                              style: GoogleFonts.raleway(fontSize: 18.sp, color: Colors.orange,),
+                              style: GoogleFonts.raleway(
+                                fontSize: 18.sp,
+                                color: Colors.orange,
+                              ),
                             ),
                           ),
                         ),
@@ -169,7 +171,8 @@ class CustomFooter extends StatelessWidget {
                             FontAwesomeIcons.linkedin,
                             color: Colors.blue,
                           ),
-                          link: 'https://www.linkedin.com/in/shabir-khan-87984222b/',
+                          link:
+                              'https://www.linkedin.com/in/shabir-khan-87984222b/',
                         ),
                       ],
                     ),
@@ -177,13 +180,15 @@ class CustomFooter extends StatelessWidget {
                   Expanded(
                     flex: width < Responsive.mobileMaxWith ? 1 : 2,
                     child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          '\u00a9 Copy Right 2022, All Right reserved',
-                          style: GoogleFonts.raleway(
-                            fontSize: width < Responsive.mobileMaxWith ? 8.sp:14.sp
-                          ),
-                        )),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '\u00a9 Copy Right 2022, All Right reserved',
+                        style: GoogleFonts.raleway(
+                            fontSize: width < Responsive.mobileMaxWith
+                                ? 8.sp
+                                : 14.sp),
+                      ),
+                    ),
                   ),
                 ],
               ),
