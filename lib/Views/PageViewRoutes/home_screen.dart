@@ -3,14 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_bar_animation_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_control_cubit.dart';
-import 'package:my_portfolio_web/Controllers/Cubits/services_provide_cubit.dart';
 import 'package:my_portfolio_web/Models/Utils/on_scroll_animation.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/AboutUs/about_us.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/ContactUsRoutes/contact_us.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/ServicesRouts/services_view.dart';
 import 'package:my_portfolio_web/Views/Utils/Widgets/CustomNavBar/custom_nav_bar.dart';
 import 'package:my_portfolio_web/Views/PageViewRoutes/page_view_static.dart';
-
 import '../../Models/Utils/remove_glow.dart';
 import '../Utils/Widgets/custom_drawer.dart';
 import 'PortfolioRoutes/portfolio_view.dart';
@@ -38,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
         /// ============= Services Animation
+
 
           OnScrollAnimation.ourGoalAnimation(context, true);
 
@@ -103,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                 ),
-
               ],
             ),
           ),
@@ -127,7 +125,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-
           ),
         ],
       ),

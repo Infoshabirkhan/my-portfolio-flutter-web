@@ -7,6 +7,7 @@ import 'package:my_portfolio_web/Views/PageViewRoutes/ContactUsRoutes/components
 import 'package:my_portfolio_web/Views/Utils/Widgets/CustomNavBar/custom_nav_bar.dart';
 import 'package:my_portfolio_web/Views/Utils/Widgets/custom_footer/custom_footer.dart';
 
+import '../../../Controllers/Cubits/submit_message_cubit.dart';
 import '../../../Models/Utils/responsive.dart';
 import '../page_view_static.dart';
 
@@ -44,45 +45,142 @@ class _ContactUsViewState extends State<ContactUsView> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var width = MediaQuery
+        .of(context)
+        .size
+        .width;
     return SizedBox(
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
-        children: [
-          SizedBox(
-            height: 450.sp,
-            child: Stack(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Image.asset(
-                    'assets/images/contactus.jpg',
-                    fit: BoxFit.cover,
-                    colorBlendMode: BlendMode.darken,
-                    color: Colors.black.withOpacity(0.7),
+      child: BlocProvider(
+        create: (context) => SubmitMessageCubit(),
+        child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          children: [
+
+
+            SizedBox(
+              height: 450.sp,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.asset(
+                      'assets/images/contactus.jpg',
+                      fit: BoxFit.cover,
+                      colorBlendMode: BlendMode.darken,
+                      color: Colors.black.withOpacity(0.7),
+                    ),
                   ),
-                ),
-                Center(
-                  child: Text('Contact',
-                      style: GoogleFonts.raleway(
-                          fontSize: Responsive.extraLargeFont(width: width),
-                          color: Colors.orange)),
-                ),
-              ],
+                  Center(
+                    child: Text('Contact',
+                        style: GoogleFonts.raleway(
+                            fontSize: Responsive.extraLargeFont(width: width),
+                            color: Colors.orange)),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20.sp,
-          ),
-          const ContactDesign(),
+            SizedBox(
+              height: 20.sp,
+            ),
+
+            Container(
+
+              child: BlocBuilder<SubmitMessageCubit, SubmitMessageState>(
+                builder: (context, state) {
+                  if (state is SubmitMessageLoaded) {
+                    return Container(
+
+                      margin: EdgeInsets.only(
+                        bottom: 20.sp,
+                        left: Responsive.padding(width: width),
+                        right: Responsive.padding(width: width),),
+                      height: 50.sp,
+                      decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(10.sp)
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(child: Container(
+                            height: 40.sp,
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.green
+                            ),
+                            child: const Center(
+                                child: Icon(Icons.check, color: Colors.white,)),
+                          ),),
+                          Expanded(
+
+                              flex: 6,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+
+                                    left: 0,
+                                    child: Container(
+                                      alignment: Alignment.centerLeft,
+                                      height: 50.sp,
+                                      child: Text('Thanks for your Feedback',
+                                        style: GoogleFonts.dancingScript(
+                                          wordSpacing: 1.2,
+
+                                            fontSize: 16.sp
+                                        ),),
+                                    ),
+                                  ),
+
+                                  Positioned(
+                                    top: 0,
+                                    bottom: 0,
+                                    right: 10.sp,
+
+                                    child: InkWell(
+                                        onTap: () {
+                                          context.read<SubmitMessageCubit>()
+                                              .disposeMessage();
+                                        },
+                                        child: Container(
+                                            width: 50.sp,
+                                            height: 40.sp,
+
+                                            child: const Icon(Icons.clear,
+                                              color: Colors.red,))),),
+                                ],
+                              )
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return SizedBox();
+                  }
+                },
+              ),
+            ),
+
+            const ContactDesign(),
 
 
-          SizedBox(height: width < Responsive.tabletMinWidth ?130.sp :430.sp ,),
+            BlocBuilder<SubmitMessageCubit, SubmitMessageState>(
+              builder: (context, state) {
+                if(state is SubmitMessageLoaded){
+                  return SizedBox(
+                    height: width < Responsive.tabletMinWidth ? 70.sp : 320.sp,);
 
-          CustomFooter()
-        ],
+                }else {
+                  return SizedBox(
+                    height: width < Responsive.tabletMinWidth ? 130.sp : 380.sp,);
+
+                }
+                    },
+            ),
+
+            CustomFooter()
+          ],
+        ),
       ),
     );
     // return Scaffold(

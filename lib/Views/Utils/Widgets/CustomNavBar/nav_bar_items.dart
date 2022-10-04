@@ -37,12 +37,17 @@ class NavBarItems extends StatelessWidget {
             //  }));
           },
           child: Container(
-            child: Text(
-              title,
-              style: GoogleFonts.raleway(
+            height: 40.sp,
+            child: Align(
+              alignment: isDrawer! ? Alignment.centerLeft: Alignment.center,
+              child: Text(
+                title,
+                style: GoogleFonts.raleway(
 
-                color: state == itemIndex ? Colors.orange : Colors.white
+                  fontSize: isDrawer! ? 15.sp: 12.sp,
+                  color: state == itemIndex ? Colors.orange : Colors.white
 
+                ),
               ),
             ),
           ),

@@ -1,21 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio_web/Controllers/Cubits/submit_message_cubit.dart';
+import 'package:my_portfolio_web/Models/Utils/responsive.dart';
 
-class ContactUsForm extends StatelessWidget {
+import '../contact_us_static_pro.dart';
+
+class ContactUsForm extends StatefulWidget {
   const ContactUsForm({Key? key}) : super(key: key);
 
   @override
+  State<ContactUsForm> createState() => _ContactUsFormState();
+}
+
+class _ContactUsFormState extends State<ContactUsForm> {
+  @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return Expanded(
+      flex: width < Responsive.tabletMinWidth ? 2:1,
+
+
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         children: [
+
+
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: ContactUsStaticProperties.nameController,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Your name'),
                 ),
@@ -23,9 +41,10 @@ class ContactUsForm extends StatelessWidget {
               SizedBox(
                 width: 10.sp,
               ),
-              const Expanded(
+              Expanded(
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: ContactUsStaticProperties.emailController,
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Your email'),
                 ),
@@ -35,17 +54,19 @@ class ContactUsForm extends StatelessWidget {
           SizedBox(
             height: 20.sp,
           ),
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            controller: ContactUsStaticProperties.phoneNumberController,
+            decoration: const InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Phone number'),
           ),
           SizedBox(
             height: 20.sp,
           ),
-          const TextField(
+          TextField(
+            controller: ContactUsStaticProperties.messageController,
             maxLines: 4,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(), hintText: 'Your email'),
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(), hintText: 'Your Message...'),
           ),
           SizedBox(
             height: 20.sp,
@@ -54,19 +75,42 @@ class ContactUsForm extends StatelessWidget {
             children: [
               const Spacer(),
               Expanded(
-                child: Container(
-                  height: 45.sp,
-                  color: Colors.orange,
-                  child: Center(
-                    child: Text(
-                      'Submit',
-                      style: GoogleFonts.raleway(),
-                    ),
-                  ),
+                child: BlocBuilder<SubmitMessageCubit, SubmitMessageState>(
+                  builder: (context, state) {
+                    if (state is SubmitMessageLoading) {
+                      return Container(
+                        height: 45.sp,
+                        color: Colors.orange,
+                        child: const Center(
+                          child: CircularProgressIndicator(),),
+                      );
+                    } else {
+                      return InkWell(
+                        onTap: () async {
+                          if (ContactUsStaticProperties.validate() == true) {
+                            context.read<SubmitMessageCubit>()
+                                .submitMessage();
+                          }
+                        },
+                        child: Container(
+                          height: 45.sp,
+                          color: Colors.orange,
+                          child: Center(
+                            child: Text(
+                              'Submit',
+                              style: GoogleFonts.raleway(),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                  },
                 ),
               ),
             ],
-          )
+          ),
+
+
         ],
       ),
     )

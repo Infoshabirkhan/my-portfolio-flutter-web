@@ -15,22 +15,16 @@ class ContactDesign extends StatelessWidget {
       padding: EdgeInsets.only(
           left: Responsive.padding(width: width),
           right: Responsive.padding(width: width)),
-      height: width < Responsive.tabletMinWidth ? 600.sp:300.sp,
-      child: width < Responsive.tabletMinWidth ?
-
-      Column(
+      height: width < Responsive.tabletMinWidth ? 600.sp:350.sp,
+      child: Flex(
+        direction: width < Responsive.tabletMinWidth ? Axis.vertical: Axis.horizontal,
         children: const [
           ContactDescription(),
           ContactUsForm()
         ],
       )
 
-          :Row(
-        children: const [
-ContactDescription(),
-          ContactUsForm()
-        ],
-      ),
+
     );
   }
 }

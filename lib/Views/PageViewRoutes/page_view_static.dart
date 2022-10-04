@@ -26,7 +26,7 @@ class PageViewStatic{
 
 const  double aboutUsHeight = 2500;  // 0 index in page view
 const  double servicesHeight = 1500; // 1 index in page view
-const  double portfolioHeight = 1700; // 2 index in page view
+const  double portfolioHeight = 2400; // 2 index in page view
 const double contactUsHeight = 1500;  // 3 index in page view
 
 

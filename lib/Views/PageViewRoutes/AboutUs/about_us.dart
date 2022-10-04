@@ -85,7 +85,7 @@ class AboutUsView extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Center(child: Image.asset('assets/images/profile.png'),),
+                    child: Center(child: Image.asset('assets/images/profile2.png'),),
                   ),
                 ],
               ),
