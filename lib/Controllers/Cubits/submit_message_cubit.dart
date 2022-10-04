@@ -30,7 +30,8 @@ class SubmitMessageCubit extends Cubit<SubmitMessageState> {
       'phone_number': ContactUsStaticProperties
           .phoneNumberController.text.trim(),
       'message': ContactUsStaticProperties.messageController
-          .text.trim()
+          .text.trim(),
+      'date_time' : DateTime.now(),
     }).whenComplete(() =>
         ContactUsStaticProperties.clearAllFields());
 
