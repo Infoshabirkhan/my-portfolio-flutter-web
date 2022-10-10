@@ -79,6 +79,7 @@ class _ServicesViewState extends State<ServicesView> {
               ],
             ),
           ),
+
           SizedBox(
             height: 20.sp,
           ),
@@ -162,4 +163,5 @@ class _ServicesViewState extends State<ServicesView> {
       ),
     );
   }
+
 }
