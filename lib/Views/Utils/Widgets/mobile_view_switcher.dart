@@ -11,11 +11,11 @@ class MobileViewSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    return width < Responsive.tabletMinWidth
-        ? Column(
+    return  Responsive.isMobile(context)
+        ? Row(
             children: children,
           )
-        : Row(
+        : Column(
             children: children,
           );
   }

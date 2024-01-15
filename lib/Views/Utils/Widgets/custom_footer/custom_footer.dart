@@ -23,8 +23,8 @@ class CustomFooter extends StatelessWidget {
             flex: 5,
             child: Container(
               padding: EdgeInsets.only(
-                left: Responsive.padding(width: width),
-                right: Responsive.padding(width: width),
+                left: Responsive.isMobile(context) ? 20.sp:50.sp,
+                right:  Responsive.isMobile(context) ? 20.sp:50.sp,
               ),
               color: Colors.black,
               child: Row(
@@ -52,13 +52,13 @@ class CustomFooter extends StatelessWidget {
                         ),
                         Visibility(
                             visible:
-                                width < Responsive.mobileMaxWith ? true : false,
+                            Responsive.isMobile(context) ? true : false,
                             child: const FooterMenus())
                       ],
                     ),
                   ),
                   Visibility(
-                    visible: width < Responsive.mobileMaxWith ? false : true,
+                    visible: Responsive.isMobile(context) ?false : true,
                     child: Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(),
@@ -144,8 +144,8 @@ class CustomFooter extends StatelessWidget {
           Expanded(
             child: Container(
               padding: EdgeInsets.only(
-                left: Responsive.padding(width: width),
-                right: Responsive.padding(width: width),
+                left: Responsive.isMobile(context) ? 20.sp:50.sp,
+                right: Responsive.isMobile(context) ? 20.sp:50.sp,
               ),
               child: Row(
                 children: [
@@ -178,13 +178,13 @@ class CustomFooter extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: width < Responsive.mobileMaxWith ? 1 : 2,
+                    flex: Responsive.isMobile(context) ? 1 : 2,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         '\u00a9 Copy Right 2022, All Right reserved',
                         style: GoogleFonts.raleway(
-                            fontSize: width < Responsive.mobileMaxWith
+                            fontSize: Responsive.isMobile(context)
                                 ? 8.sp
                                 : 14.sp),
                       ),

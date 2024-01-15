@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,19 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/nav_control_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/our_services_animation_cubit.dart';
 import 'package:my_portfolio_web/Controllers/Cubits/services_provide_cubit.dart';
-import 'package:my_portfolio_web/Views/PageViewRoutes/home_screen.dart';
 
 import 'Controllers/Cubits/nav_bar_animation_cubit.dart';
+import 'Views/Screens/HomeScreen/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (BuildContext context) => const MyApp(),
-    ),
-  );
+ runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -41,14 +35,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+       minTextAdapt: true,
+      designSize: Size(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height),
+      useInheritedMediaQuery: true,
+
       builder: (BuildContext context, Widget? child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => NavBarAnimationCubit(false)),
-          BlocProvider(create: (context) => OurServicesAnimationCubit(false)),
-          BlocProvider(create: (context) => NavControlCubit(0)),
-          BlocProvider(create: (context) => ServicesProvideCubit(false)),
+          // BlocProvider(create: (context) => OurServicesAnimationCubit(false)),
+          // BlocProvider(create: (context) => NavControlCubit(0)),
+          // BlocProvider(create: (context) => ServicesProvideCubit(false)),
         ],
         child: MaterialApp(
+
           debugShowCheckedModeBanner: false,
           title: 'SCoder-Shabir khan',
           theme: ThemeData(
@@ -82,7 +82,6 @@ class _MyAppState extends State<MyApp> {
           },
         ),
       ),
-      minTextAdapt: true,
     );
   }
 }

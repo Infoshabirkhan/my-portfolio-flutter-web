@@ -1,73 +1,50 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
 
-class Responsive{
+class Responsive extends StatelessWidget {
+  final Widget mobile;
+  final Widget tablet;
+  final Widget desktop;
 
+  const Responsive({
+    required Key key,
+    required this.mobile,
+    required this.tablet,
+    required this.desktop,
+  }) : super(key: key);
 
-  static double tabletMaxWidth   = 1024;
-  static double tabletMinWidth   = 768;
+// This size work fine on my design, maybe you need some customization depends on your design
+  // This isMobile, isTablet, isDesktop help us later
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 765;
 
- // ============================
-  static double mobileMinWith   = 320;
-  static double mobileMaxWith   = 480;
+  static bool isSmallTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width < 920 &&
+          MediaQuery.of(context).size.width >= 766;
 
+  static bool isTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width <= 1025 &&
+          MediaQuery.of(context).size.width >= 920;
 
+  static bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 1026;
 
-
-  static double destopWidth   = 1224;
-
-
-
-  static double pricingPadding( double width){
-
-
-
-    if(width < mobileMaxWith){
-      return 5.sp;
-    }else if (width > destopWidth){
-      return  100.sp;
-    }else if (width < tabletMinWidth){
-      return 10.sp;
-
-    }
-    else{
-      return 50.sp;
-    }
-
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      // If our width is more than 1100 then we consider it a desktop
+      builder: (context, constraints) {
+        if (constraints.maxWidth >= 1100) {
+          return desktop;
+        }
+        // If width it less then 1100 and more then 650 we consider it as tablet
+        else if (constraints.maxWidth >= 650) {
+          return tablet;
+        }
+        // Or less then that we called it mobile
+        else {
+          return mobile;
+        }
+      },
+    );
   }
-
-  static double padding({required double width}){
-
-
-
-    if(width < mobileMaxWith){
-      return 20.sp;
-    }else if (width > destopWidth){
-      return  100.sp;
-    }
-    else{
-      return 40.sp;
-    }
-
-  }
-
-
-  static double extraLargeFont({required double width}){
-
-//    fontSize: width < Responsive.mobileMaxWith ? 18.sp :width > Responsive.destopWidth ? 45.sp : 25.sp,
-
-
-
-    if(width < mobileMaxWith){
-      return 25.sp;
-    }else if (width > destopWidth){
-      return 50.sp;
-    }
-    else{
-      return 40.sp;
-    }
-
-  }
-
-
-
-  }
+}
