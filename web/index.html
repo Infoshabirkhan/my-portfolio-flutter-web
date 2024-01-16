@@ -72,8 +72,52 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+            flex-direction: column; /* Display flex items vertically */
+
+    }
+
+    #typewriter-text {
+      color: white;
+      font-size: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid white;
+      animation: typing 3s steps(40) infinite;
+      margin-right: 20px;
+    }
+
+    img {
+      display: block;
+      margin-left: 20px;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 80%;
+      }
+    }
+  </style>
 </head>
 <body>
+<img src="/web/technology2.gif" alt="Your GIF">
+
+<div id="typewriter-text">Welcome to My Portfolio. Exploring the World of Mobile App Development!</div>
+
 
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
