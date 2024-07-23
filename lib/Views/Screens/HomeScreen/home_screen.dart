@@ -17,24 +17,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
+      backgroundColor: Color(0xff090909),
       body: ListView(
         children: [
           SizedBox(
             height: 1.sh,
             child: Stack(
               children: [
-                Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Image.asset(
-                      AppImages.technology,
-                      color: Colors.black.withOpacity(0.75),
-                      colorBlendMode: BlendMode.darken,
-                      fit: BoxFit.cover,
-                    )),
+                // Positioned(
+                //     top: 0,
+                //     left: 0,
+                //     right: 0,
+                //     bottom: 0,
+                //     child: Image.asset(
+                //       AppImages.technology,
+                //       color: Colors.black.withOpacity(0.75),
+                //       colorBlendMode: BlendMode.darken,
+                //       fit: BoxFit.cover,
+                //     )),
                 const CustomNavBar(),
                 Positioned(
                   left: 20.sp,
@@ -49,12 +49,12 @@ class HomeScreen extends StatelessWidget {
                         Center(
                             child: SizedBox(
                                 width: Responsive.isDesktop(context)
-                                    ? 0.3.sw
+                                    ? 0.35.sw
                                     : 0.7.sw,
                                 height: Responsive.isDesktop(context)
                                     ? 0.5.sh
-                                    : 0.35.sh,
-                                child: Image.asset(AppImages.profile3))),
+                                    : 0.4.sh,
+                                child: Image.asset(AppImages.profile3, ))),
                         Center(
                           child: GradientText(
                             "Hello I'm Shabir khan",
