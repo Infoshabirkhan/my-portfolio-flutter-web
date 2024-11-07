@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portfolio_web/Models/Utils/spacing.dart';
+import 'dart:html' as html;
 
 import '../my_text.dart';
 
@@ -32,7 +33,11 @@ class FollowOnSocialMediaButtons extends StatelessWidget {
           10.ph,
 
           InkWell(
-            onTap: () {},
+            onTap: () {
+
+              html.window
+                  .open("https://www.linkedin.com/in/shabir-khan-87984222b/", '_blank');
+            },
             child: Container(
               padding: EdgeInsets.all(5.sp),
               decoration: const BoxDecoration(
@@ -47,7 +52,11 @@ class FollowOnSocialMediaButtons extends StatelessWidget {
           ),
           10.ph,
           InkWell(
-            onTap: () {},
+            onTap: () {
+              html.window
+                  .open("mailto:infoshabbirkhan@gmail.com", '_blank');
+
+            },
             child: Container(
               padding: EdgeInsets.all(5.sp),
               decoration: const BoxDecoration(

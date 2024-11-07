@@ -118,7 +118,8 @@ class CustomFooter extends StatelessWidget {
                                   FontAwesomeIcons.phone,
                                   color: Colors.orange,
                                 ),
-                                label: '+92310-9688770',
+                                // label: '+92310-9688770',
+                                label: 'N/A',
                               ),
                               ContactItems(
                                 icon: Icon(
@@ -172,7 +173,7 @@ class CustomFooter extends StatelessWidget {
                             color: Colors.blue,
                           ),
                           link:
-                              'https://www.linkedin.com/in/shabir-khan-87984222b/',
+                                'https://www.linkedin.com/in/shabir-khan-87984222b/',
                         ),
                       ],
                     ),

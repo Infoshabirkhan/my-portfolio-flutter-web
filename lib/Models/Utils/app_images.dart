@@ -6,4 +6,5 @@ class AppImages{
   static const profile3 = '$baseDir/profile3.png';
   static const technology = '$baseDir/technology.gif';
   static const technology2 = '$baseDir/technology2.gif';
+  static const pattern = '$baseDir/pattern.svg';
 }
