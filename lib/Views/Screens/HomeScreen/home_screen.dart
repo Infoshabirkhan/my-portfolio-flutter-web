@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
 
                     right: -90.sp,
                     bottom: 0,
-                    child: SvgPicture.asset(AppImages.pattern,width: 0.5.sw,color: Colors.white.withOpacity(0.8),)),
+                    child: SvgPicture.asset(AppImages.pattern,width: Responsive.isDesktop(context) ?  0.5.sw : 0.9.sw,)),
                 //pattern
                 // Positioned(child: SvgPicture.as)
                 // Positioned(
